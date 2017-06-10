@@ -1,1 +1,1 @@
-include ':app', ':propertychangesupport'
+include ':app', ':propertychangesupport', ':aidlservice', ':aidlclient'
