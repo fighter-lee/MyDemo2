@@ -14,7 +14,6 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class City {
 
-    @ToOne
     private String name;
 
     @NotNull

@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/aidlservice/aidlservice.iml" filepath="$PROJECT_DIR$/aidlservice/aidlservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/greendao/greendao.iml" filepath="$PROJECT_DIR$/greendao/greendao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jcenter1/jcenter1.iml" filepath="$PROJECT_DIR$/jcenter1/jcenter1.iml" />
       <module fileurl="file://$PROJECT_DIR$/propertychangesupport/propertychangesupport.iml" filepath="$PROJECT_DIR$/propertychangesupport/propertychangesupport.iml" />
     </modules>
   </component>
