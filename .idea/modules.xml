@@ -6,7 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/aidlclient/aidlclient.iml" filepath="$PROJECT_DIR$/aidlclient/aidlclient.iml" />
       <module fileurl="file://$PROJECT_DIR$/aidlservice/aidlservice.iml" filepath="$PROJECT_DIR$/aidlservice/aidlservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/classloaderexample/classloaderexample.iml" filepath="$PROJECT_DIR$/classloaderexample/classloaderexample.iml" />
       <module fileurl="file://$PROJECT_DIR$/greendao/greendao.iml" filepath="$PROJECT_DIR$/greendao/greendao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hotfix_demo/hotfix_demo.iml" filepath="$PROJECT_DIR$/hotfix_demo/hotfix_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/jcenter1/jcenter1.iml" filepath="$PROJECT_DIR$/jcenter1/jcenter1.iml" />
       <module fileurl="file://$PROJECT_DIR$/propertychangesupport/propertychangesupport.iml" filepath="$PROJECT_DIR$/propertychangesupport/propertychangesupport.iml" />
     </modules>

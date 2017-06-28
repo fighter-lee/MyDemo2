@@ -11,7 +11,9 @@
             <option value="$PROJECT_DIR$/aidlclient" />
             <option value="$PROJECT_DIR$/aidlservice" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/classloaderexample" />
             <option value="$PROJECT_DIR$/greendao" />
+            <option value="$PROJECT_DIR$/hotfix_demo" />
             <option value="$PROJECT_DIR$/jcenter1" />
             <option value="$PROJECT_DIR$/propertychangesupport" />
           </set>

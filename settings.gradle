@@ -1,1 +1,1 @@
-include ':app', ':propertychangesupport', ':aidlservice', ':aidlclient', ':greendao', ':jcenter1'
+include ':app', ':propertychangesupport', ':aidlservice', ':aidlclient', ':greendao', ':jcenter1', ':classloaderexample', ':hotfix_demo'
