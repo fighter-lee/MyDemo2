@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.taobao.sophix.SophixManager;
 
@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_clean_console:
                 mStatusStr = "";
                 updateConsole("");
+                Toast.makeText(MainActivity.this, "旧的", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;

@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/hotfix_demo/hotfix_demo.iml" filepath="$PROJECT_DIR$/hotfix_demo/hotfix_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/jcenter1/jcenter1.iml" filepath="$PROJECT_DIR$/jcenter1/jcenter1.iml" />
       <module fileurl="file://$PROJECT_DIR$/propertychangesupport/propertychangesupport.iml" filepath="$PROJECT_DIR$/propertychangesupport/propertychangesupport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/thread/thread.iml" filepath="$PROJECT_DIR$/thread/thread.iml" />
     </modules>
   </component>
 </project>
