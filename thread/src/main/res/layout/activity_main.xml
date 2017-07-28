@@ -32,4 +32,16 @@
         android:layout_height="wrap_content"
         android:onClick="click_ourThread"
         android:text="ourThread"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="click_test"
+        android:text="test"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="click_net_test"
+        android:text="net_test"/>
 </LinearLayout>
