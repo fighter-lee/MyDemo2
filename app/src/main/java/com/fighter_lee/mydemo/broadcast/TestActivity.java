@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -48,19 +47,20 @@ public class TestActivity extends Activity {
 
         getException(new NullPointerException());
         getException(new ClassCastException());
-//        getException(new Exception());
+        //        getException(new Exception());
+
     }
 
     public void getException(Exception e) {
-        if (e instanceof NullPointerException){
-            Log.d("TAH",1+"");
+        if (e instanceof NullPointerException) {
+            Log.d("TAH", 1 + "");
         }
-        if (e instanceof ClassCastException){
-            Log.d("TAH",2+"");
+        if (e instanceof ClassCastException) {
+            Log.d("TAH", 2 + "");
         }
 
-        if (e instanceof Exception){
-            Log.d("TAH",3+"");
+        if (e instanceof Exception) {
+            Log.d("TAH", 3 + "");
         }
     }
 
@@ -73,6 +73,6 @@ public class TestActivity extends Activity {
     public void sendBroadCast() {
         Intent callbackIntent = new Intent("MqttService.callbackToActivity.v0");
         callbackIntent.putExtra("MqttService.clientHandle", "xxxx");
-        LocalBroadcastManager.getInstance(App.sCx).sendBroadcast(callbackIntent);
+//        LocalBroadcastManager.getInstance(App.sCx).sendBroadcast(callbackIntent);
     }
 }
