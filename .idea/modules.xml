@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/aidlservice/aidlservice.iml" filepath="$PROJECT_DIR$/aidlservice/aidlservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/classloaderexample/classloaderexample.iml" filepath="$PROJECT_DIR$/classloaderexample/classloaderexample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coordinatorlayouttest/coordinatorlayouttest.iml" filepath="$PROJECT_DIR$/coordinatorlayouttest/coordinatorlayouttest.iml" />
       <module fileurl="file://$PROJECT_DIR$/filepicker/filepicker.iml" filepath="$PROJECT_DIR$/filepicker/filepicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/greendao/greendao.iml" filepath="$PROJECT_DIR$/greendao/greendao.iml" />
       <module fileurl="file://$PROJECT_DIR$/hotfix_android_demo/hotfix_android_demo.iml" filepath="$PROJECT_DIR$/hotfix_android_demo/hotfix_android_demo.iml" />
