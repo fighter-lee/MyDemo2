@@ -3,23 +3,17 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="D:\develop\as3.0\android-studio\gradle\gradle-4.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/aidlclient" />
             <option value="$PROJECT_DIR$/aidlservice" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/classloaderexample" />
-            <option value="$PROJECT_DIR$/coordinatorlayouttest" />
-            <option value="$PROJECT_DIR$/filepicker" />
-            <option value="$PROJECT_DIR$/greendao" />
-            <option value="$PROJECT_DIR$/hotfix_android_demo" />
-            <option value="$PROJECT_DIR$/injectdemo" />
-            <option value="$PROJECT_DIR$/jcenter1" />
-            <option value="$PROJECT_DIR$/propertychangesupport" />
-            <option value="$PROJECT_DIR$/thread" />
+            <option value="$PROJECT_DIR$/google_vr" />
+            <option value="$PROJECT_DIR$/weaklock" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
