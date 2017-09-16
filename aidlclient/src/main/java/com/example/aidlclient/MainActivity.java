@@ -8,29 +8,37 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.aidlservice.IService;
+import com.example.aidlservice.IServiceListener;
 import com.example.aidlservice.MeiNvManager;
 
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private MeiNvManager meiNvManager;
+    private IService iService;
 
     private ServiceConnection conn = new ServiceConnection() {
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            meiNvManager = MeiNvManager.Stub.asInterface(service);
+//            meiNvManager = MeiNvManager.Stub.asInterface(service);
+            iService = IService.Stub.asInterface(service);
+            Log.d(TAG, "onServiceConnected: ");
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
             meiNvManager = null;
+            iService = null;
         }
     };
+
     private TextView tv_name;
     private TextView tv_height;
     private TextView tv_weight;
@@ -46,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         Button click = (Button) findViewById(R.id.click);
+        Button test = (Button) findViewById(R.id.test);
+        Button download = (Button) findViewById(R.id.download);
         tv_name = (TextView) findViewById(R.id.tv_name);
         tv_height = (TextView) findViewById(R.id.tv_height);
         tv_weight = (TextView) findViewById(R.id.tv_weight);
@@ -59,6 +69,38 @@ public class MainActivity extends AppCompatActivity {
                     tv_name.setText(name);
                     tv_height.setText(height);
                     tv_weight.setText(weight);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    iService.test();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    iService.start(new IServiceListener.Stub() {
+                        @Override
+                        public void download(int progress) throws RemoteException {
+                            Log.d(TAG, "download: "+progress);
+                        }
+
+                        @Override
+                        public void cancel() throws RemoteException {
+                            Log.d(TAG, "cancel: ");
+                        }
+                    });
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }

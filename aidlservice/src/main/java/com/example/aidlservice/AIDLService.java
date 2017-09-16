@@ -4,11 +4,10 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
-import android.os.Parcel;
 import android.os.RemoteException;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
-
-import java.util.Random;
+import android.util.Log;
 
 /**
  * Created by fighter_lee on 2017/6/10.
@@ -35,6 +34,37 @@ public class AIDLService extends Service {
             return meiNv.weight;
         }
     };
+
+    IService.Stub iService =  new IService.Stub(){
+        @Override
+        public void test() throws RemoteException {
+            Log.d(TAG, "test: ");
+        }
+
+        @Override
+        public void start(IServiceListener iServiceListener) throws RemoteException {
+            Log.d(TAG, "start: ");
+            startCallback(iServiceListener);
+        }
+    };
+
+    private void startCallback(IServiceListener iServiceListener) {
+        for (int i = 0; i < 100; i++) {
+            SystemClock.sleep(100);
+            try {
+                iServiceListener.download(i);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            iServiceListener.cancel();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
     private MeiNv meiNv;
     private Handler handler;
 
@@ -42,14 +72,14 @@ public class AIDLService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
 
-        return meiNvManager;
+        return iService;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
         handler = new Handler();
-        startChange();
+//        startChange();
     }
 
     private void startChange() {

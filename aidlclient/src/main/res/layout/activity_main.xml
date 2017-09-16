@@ -14,6 +14,18 @@
         android:text="click"
         android:id="@+id/click"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:id="@+id/test"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="download"
+        android:id="@+id/download"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
