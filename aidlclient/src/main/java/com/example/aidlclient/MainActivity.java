@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.aidlservice.IService;
 import com.example.aidlservice.IServiceListener;
+import com.example.aidlservice.Info;
 import com.example.aidlservice.MeiNvManager;
 
 
@@ -90,7 +91,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    iService.start(new IServiceListener.Stub() {
+                    Info info = new Info();
+                    info.setUrl("www.google.com");
+                    info.setFileSize(100000);
+                    iService.start(info, new IServiceListener.Stub() {
                         @Override
                         public void download(int progress) throws RemoteException {
                             Log.d(TAG, "download: "+progress);
@@ -101,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.d(TAG, "cancel: ");
                         }
                     });
+
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }

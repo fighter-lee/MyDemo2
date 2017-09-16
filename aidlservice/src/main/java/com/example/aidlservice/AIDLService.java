@@ -35,17 +35,19 @@ public class AIDLService extends Service {
         }
     };
 
-    IService.Stub iService =  new IService.Stub(){
+    IService.Stub iService = new IService.Stub() {
         @Override
         public void test() throws RemoteException {
             Log.d(TAG, "test: ");
         }
 
         @Override
-        public void start(IServiceListener iServiceListener) throws RemoteException {
-            Log.d(TAG, "start: ");
+        public void start(Info info, IServiceListener iServiceListener) throws RemoteException {
+            Log.d(TAG, "start: " + info.getUrl());
+            Log.d(TAG, "start: " + info.getFileSize());
             startCallback(iServiceListener);
         }
+
     };
 
     private void startCallback(IServiceListener iServiceListener) {
@@ -79,7 +81,7 @@ public class AIDLService extends Service {
     public void onCreate() {
         super.onCreate();
         handler = new Handler();
-//        startChange();
+        //        startChange();
     }
 
     private void startChange() {
@@ -89,14 +91,15 @@ public class AIDLService extends Service {
         meiNv.weight = "10";
         handler.postDelayed(runnable, 2000);
     }
+
     Runnable runnable = new Runnable() {
         @Override
-        public void run () {
+        public void run() {
             double random = Math.random();
             meiNv.name = "柳岩";
-            meiNv.height = "16" + (int)(random * 10);
-            meiNv.weight = "10" + (int)(random * 10);
-            handler.postDelayed(this,2000);
+            meiNv.height = "16" + (int) (random * 10);
+            meiNv.weight = "10" + (int) (random * 10);
+            handler.postDelayed(this, 2000);
         }
     };
     //    new MeiNvManager.Stub(){}
