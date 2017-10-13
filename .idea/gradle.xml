@@ -12,7 +12,9 @@
             <option value="$PROJECT_DIR$/aidlclient" />
             <option value="$PROJECT_DIR$/aidlservice" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/definitionview" />
             <option value="$PROJECT_DIR$/google_vr" />
+            <option value="$PROJECT_DIR$/mqttlibs" />
             <option value="$PROJECT_DIR$/weaklock" />
           </set>
         </option>

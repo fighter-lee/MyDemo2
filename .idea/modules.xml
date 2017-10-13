@@ -6,7 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/aidlclient/aidlclient.iml" filepath="$PROJECT_DIR$/aidlclient/aidlclient.iml" />
       <module fileurl="file://$PROJECT_DIR$/aidlservice/aidlservice.iml" filepath="$PROJECT_DIR$/aidlservice/aidlservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/definitionview/definitionview.iml" filepath="$PROJECT_DIR$/definitionview/definitionview.iml" />
       <module fileurl="file://$PROJECT_DIR$/google_vr/google_vr.iml" filepath="$PROJECT_DIR$/google_vr/google_vr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mqttlibs/mqttlibs.iml" filepath="$PROJECT_DIR$/mqttlibs/mqttlibs.iml" />
       <module fileurl="file://$PROJECT_DIR$/weaklock/weaklock.iml" filepath="$PROJECT_DIR$/weaklock/weaklock.iml" />
     </modules>
   </component>

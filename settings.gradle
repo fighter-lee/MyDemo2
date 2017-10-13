@@ -1,3 +1,3 @@
-include ':app', ':google_vr', ':aidlservice', ':aidlclient', ':weaklock'
+include ':app', ':google_vr', ':aidlservice', ':aidlclient', ':weaklock', ':definitionview', ':mqttlibs'
 
 //':app', ':propertychangesupport', ':aidlservice', ':aidlclient', ':greendao', ':jcenter1', ':classloaderexample', ':thread', ':hotfix_android_demo', ':injectdemo', ':filepicker', ':coordinatorlayouttest', ':google_vr'
