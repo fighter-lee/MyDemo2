@@ -20,14 +20,11 @@ import java.io.InputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
-import top.fighter_lee.mqttlibs.mqttv3.logging.Logger;
-import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
 
 
 public class WebSocketReceiver implements Runnable{
 
 	private static final String CLASS_NAME = WebSocketReceiver.class.getName();
-	private static final Logger log = LoggerFactory.getLogger(LoggerFactory.MQTT_CLIENT_MSG_CAT, CLASS_NAME);
 
 	private boolean running = false;
 	private boolean stopping = false;
@@ -50,7 +47,6 @@ public class WebSocketReceiver implements Runnable{
 	public void start(String threadName){
 		final String methodName = "start";
 		//@TRACE 855=starting
-		log.fine(CLASS_NAME, methodName, "855");
 		synchronized (lifecycle) {
 			if(!running) {
 				running = true;
@@ -70,7 +66,6 @@ public class WebSocketReceiver implements Runnable{
         boolean closed = false;
 		synchronized (lifecycle) {
 			//@TRACE 850=stopping
-			log.fine(CLASS_NAME,methodName, "850");
 			if(running) {
 				running = false;
 				receiving = false;
@@ -90,7 +85,6 @@ public class WebSocketReceiver implements Runnable{
 		}
 		receiverThread = null;
 		//@TRACE 851=stopped
-		log.fine(CLASS_NAME, methodName, "851");
 	}
 
 	public void run() {
@@ -99,7 +93,6 @@ public class WebSocketReceiver implements Runnable{
 		while (running && (input != null)) {
 			try {
 				//@TRACE 852=network read message
-				log.fine(CLASS_NAME, methodName, "852");
 				receiving = input.available() > 0;
 				WebSocketFrame incomingFrame = new WebSocketFrame(input);
 				if(!incomingFrame.isCloseFlag()){

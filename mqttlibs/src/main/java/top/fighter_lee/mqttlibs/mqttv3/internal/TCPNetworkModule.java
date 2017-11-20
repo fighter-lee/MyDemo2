@@ -15,6 +15,7 @@
  */
 package top.fighter_lee.mqttlibs.mqttv3.internal;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,8 +28,6 @@ import javax.net.SocketFactory;
 import javax.net.ssl.SSLSocketFactory;
 
 import top.fighter_lee.mqttlibs.mqttv3.MqttException;
-import top.fighter_lee.mqttlibs.mqttv3.logging.Logger;
-import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
 
 
 /**
@@ -36,7 +35,6 @@ import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
  */
 public class TCPNetworkModule implements NetworkModule {
 	private static final String CLASS_NAME = TCPNetworkModule.class.getName();
-	private static final Logger log = LoggerFactory.getLogger(LoggerFactory.MQTT_CLIENT_MSG_CAT,CLASS_NAME);
 
 	protected Socket socket;
 	private SocketFactory factory;
@@ -54,7 +52,6 @@ public class TCPNetworkModule implements NetworkModule {
 	 * @param resourceContext The Resource Context
 	 */
 	public TCPNetworkModule(SocketFactory factory, String host, int port, String resourceContext) {
-		log.setResourceName(resourceContext);
 		this.factory = factory;
 		this.host = host;
 		this.port = port;
@@ -72,7 +69,6 @@ public class TCPNetworkModule implements NetworkModule {
 //			InetAddress localAddr = InetAddress.getLocalHost();
 //			socket = factory.createSocket(host, port, localAddr, 0);
 			// @TRACE 252=connect to host {0} port {1} timeout {2}
-			log.fine(CLASS_NAME,methodName, "252", new Object[] {host, new Integer(port), new Long(conTimeout*1000)});
 			SocketAddress sockaddr = new InetSocketAddress(host, port);
 			if (factory instanceof SSLSocketFactory) {
 				// SNI support
@@ -90,7 +86,6 @@ public class TCPNetworkModule implements NetworkModule {
 		}
 		catch (ConnectException ex) {
 			//@TRACE 250=Failed to create TCP socket
-			log.fine(CLASS_NAME,methodName,"250",null,ex);
 			throw new MqttException(MqttException.REASON_CODE_SERVER_CONNECT_ERROR, ex);
 		}
 	}

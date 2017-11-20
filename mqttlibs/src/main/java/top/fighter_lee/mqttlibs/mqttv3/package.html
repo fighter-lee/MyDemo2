@@ -39,8 +39,8 @@ but not limited to:
 
 <p>The basic means of operating the client is:</p>
 <ol>
-  <li>Create an instance of {@link org.eclipse.paho.client.mqttv3.MqttClient} or 
-	{@link org.eclipse.paho.client.mqttv3.MqttAsyncClient}, providing
+  <li>Create an instance of {@link com.adups.mqtt_libs.mqttv3.MqttClient} or
+	{@link com.adups.mqtt_libs.mqttv3.MqttAsyncClient}, providing
 	the address of an MQTT server and a unique client identifier.</li>
   <li><code>connect</code> to the server</li>
   <li>Exchange messages with the server:
@@ -63,8 +63,8 @@ to use when creating MQTT application include:
   <li>For message delivery to be reliable and withstand normal and abnormal network breaks together with client 
     and server outages the client must use a persistent store to hold messages while they are being delivered. This is 
     the default case where a file based persistent store 
-    {@link org.eclipse.paho.client.mqttv3.persist.MqttDefaultFilePersistence MqttDefaultFilePersistence} is used. 
-  <li>When connecting the {@link org.eclipse.paho.client.mqttv3.MqttConnectOptions#setCleanSession(boolean) cleansession}
+    {@link com.adups.mqtt_libs.mqttv3.persist.MqttDefaultFilePersistence MqttDefaultFilePersistence} is used.
+  <li>When connecting the {@link com.adups.mqtt_libs.mqttv3.MqttConnectOptions#setCleanSession(boolean) cleansession}
    option has a big impact on the operation of the client. If set to false:
   <ul>
     <li>Message delivery will match the quality of service specified when the message was published even across
@@ -86,33 +86,33 @@ to use when creating MQTT application include:
   <li>When unsubscribing the topic to be unsubscribed must match one specified on an earlier subscribe.
   <li>There are two MQTT client libraries to choose from:
   <ol>
-    <li>{@link org.eclipse.paho.client.mqttv3.IMqttAsyncClient MqttAsyncClient} which provides a non-blocking interface where
+    <li>{@link com.adups.mqtt_libs.mqttv3.IMqttAsyncClient MqttAsyncClient} which provides a non-blocking interface where
       methods return before the requested operation has completed. The completion of the operation
       can be monitored by in several ways:
     <ul>
-      <li>Use the {@link org.eclipse.paho.client.mqttv3.IMqttToken#waitForCompletion waitForCompletion}
+      <li>Use the {@link com.adups.mqtt_libs.mqttv3.IMqttToken#waitForCompletion waitForCompletion}
        call on the token returned from the operation. This will block 
         until the operation completes. 
-      <li>Pass a {@link org.eclipse.paho.client.mqttv3.IMqttActionListener IMqttActionListener}
+      <li>Pass a {@link com.adups.mqtt_libs.mqttv3.IMqttActionListener IMqttActionListener}
         to the operation. The listener will then be called back when the operation completes.
-      <li>Set a {@link org.eclipse.paho.client.mqttv3.MqttCallback MqttCallback} on the client. It
+      <li>Set a {@link com.adups.mqtt_libs.mqttv3.MqttCallback MqttCallback} on the client. It
         will be notified when a message arrives, a message have been delivered to the server and when the
         connection to the server is lost.
     </ul>
-    <li>{@link org.eclipse.paho.client.mqttv3.IMqttClient MqttClient} where methods block until
+    <li>{@link com.adups.mqtt_libs.mqttv3.IMqttClient MqttClient} where methods block until
       the operation has completed.
   </ol>
   <li>For both the blocking and non-blocking clients some operations are asynchronous.  This includes:
   <ul>
     <li>Notification that a new message has arrived:
-      {@link org.eclipse.paho.client.mqttv3.MqttCallback#messageArrived messageArrived}.
+      {@link com.adups.mqtt_libs.mqttv3.MqttCallback#messageArrived messageArrived}.
     <li>Notification that the connection to the server has broken:
-      {@link org.eclipse.paho.client.mqttv3.MqttCallback#connectionLost connectionLost}.
+      {@link com.adups.mqtt_libs.mqttv3.MqttCallback#connectionLost connectionLost}.
     <li>Notification that a message has been delivered to the server: 
-      {@link org.eclipse.paho.client.mqttv3.MqttCallback#deliveryComplete deliveryComplete}.
+      {@link com.adups.mqtt_libs.mqttv3.MqttCallback#deliveryComplete deliveryComplete}.
   </ul>
   A client registers interest in these notifications by registering a 
-  {@link org.eclipse.paho.client.mqttv3.MqttCallback MqttCallback} on the client
+  {@link com.adups.mqtt_libs.mqttv3.MqttCallback MqttCallback} on the client
   <li>There are a number of programs that demonstrate the different modes of 
     writing MQTT applications
   <ul>
@@ -122,7 +122,7 @@ to use when creating MQTT application include:
     <li>{@link org.eclipse.paho.sample.mqttv3app.SampleAsyncWait} uses the asynchronous client and
       shows how to use the token returned from each operation to block until the operation completes.
   </ul>
-  <li>{@link org.eclipse.paho.client.mqttv3.MqttConnectOptions MqttConnectOptions} can be used to override the 
+  <li>{@link com.adups.mqtt_libs.mqttv3.MqttConnectOptions MqttConnectOptions} can be used to override the
   default connection options. This includes:
     <ul>
     	<li>Setting the cleansession flag

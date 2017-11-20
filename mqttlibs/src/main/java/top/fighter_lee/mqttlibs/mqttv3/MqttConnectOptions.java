@@ -17,6 +17,7 @@
  */
 package top.fighter_lee.mqttlibs.mqttv3;
 
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Properties;
@@ -25,6 +26,7 @@ import javax.net.SocketFactory;
 import javax.net.ssl.HostnameVerifier;
 
 import top.fighter_lee.mqttlibs.mqttv3.util.Debug;
+
 
 /**
  * Holds the set of options that control how the client connects to a server.

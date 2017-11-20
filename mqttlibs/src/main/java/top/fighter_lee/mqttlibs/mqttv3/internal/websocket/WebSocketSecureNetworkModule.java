@@ -15,6 +15,7 @@
  */
 package top.fighter_lee.mqttlibs.mqttv3.internal.websocket;
 
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,15 +27,12 @@ import javax.net.ssl.SSLSocketFactory;
 
 import top.fighter_lee.mqttlibs.mqttv3.MqttException;
 import top.fighter_lee.mqttlibs.mqttv3.internal.SSLNetworkModule;
-import top.fighter_lee.mqttlibs.mqttv3.logging.Logger;
-import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
 
 
 public class WebSocketSecureNetworkModule extends SSLNetworkModule {
 	
 	private static final String CLASS_NAME = WebSocketSecureNetworkModule.class.getName();
-	private static final Logger log = LoggerFactory.getLogger(LoggerFactory.MQTT_CLIENT_MSG_CAT, CLASS_NAME);
-	
+
 	private PipedInputStream pipedInputStream;
 	private WebSocketReceiver webSocketReceiver;
 	private String uri;
@@ -55,7 +53,6 @@ public class WebSocketSecureNetworkModule extends SSLNetworkModule {
 		this.host = host;
 		this.port = port;
 		this.pipedInputStream = new PipedInputStream();
-		log.setResourceName(clientId);
 	}
 
 	public void start() throws IOException, MqttException {

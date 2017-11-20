@@ -15,6 +15,7 @@
  */
 package top.fighter_lee.mqttlibs.mqttv3.internal;
 
+
 import java.util.ArrayList;
 
 import top.fighter_lee.mqttlibs.mqttv3.BufferedMessage;
@@ -22,14 +23,11 @@ import top.fighter_lee.mqttlibs.mqttv3.DisconnectedBufferOptions;
 import top.fighter_lee.mqttlibs.mqttv3.MqttException;
 import top.fighter_lee.mqttlibs.mqttv3.MqttToken;
 import top.fighter_lee.mqttlibs.mqttv3.internal.wire.MqttWireMessage;
-import top.fighter_lee.mqttlibs.mqttv3.logging.Logger;
-import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
 
 
 public class DisconnectedMessageBuffer implements Runnable {
 	
 	private static final String CLASS_NAME = "DisconnectedMessageBuffer";
-	private static final Logger log = LoggerFactory.getLogger(LoggerFactory.MQTT_CLIENT_MSG_CAT, CLASS_NAME);
 	private DisconnectedBufferOptions bufferOpts;
 	private ArrayList buffer;
 	private Object	bufLock = new Object();  	// Used to synchronise the buffer
@@ -102,7 +100,6 @@ public class DisconnectedMessageBuffer implements Runnable {
 	public void run() {
 		final String methodName = "run";
 		// @TRACE 516=Restoring all buffered messages.
-		log.fine(CLASS_NAME, methodName, "516");
 			while(getMessageCount() > 0){
 				try {
 				BufferedMessage bufferedMessage = getMessage(0);
@@ -112,7 +109,6 @@ public class DisconnectedMessageBuffer implements Runnable {
 				} catch (MqttException ex) {
 					// Error occurred attempting to publish buffered message likely because the client is not connected
 					// @TRACE 517=Error occured attempting to publish buffered message due to disconnect.
-					log.warning(CLASS_NAME, methodName, "517");
 					break;
 				}
 			}

@@ -15,14 +15,13 @@
  */
 package top.fighter_lee.mqttlibs.mqttv3.internal.wire;
 
+
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
 import top.fighter_lee.mqttlibs.mqttv3.MqttException;
 import top.fighter_lee.mqttlibs.mqttv3.internal.ClientState;
-import top.fighter_lee.mqttlibs.mqttv3.logging.Logger;
-import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
 
 
 /**
@@ -31,7 +30,6 @@ import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
  */
 public class MqttOutputStream extends OutputStream {
 	private static final String CLASS_NAME = MqttOutputStream.class.getName();
-	private static final Logger log = LoggerFactory.getLogger(LoggerFactory.MQTT_CLIENT_MSG_CAT, CLASS_NAME);
 
 	private ClientState clientState = null;
 	private BufferedOutputStream out;
@@ -88,7 +86,6 @@ public class MqttOutputStream extends OutputStream {
         }		
 		
 		// @TRACE 529= sent {0}
-    	log.fine(CLASS_NAME, methodName, "529", new Object[]{message});
 	}
 }
 

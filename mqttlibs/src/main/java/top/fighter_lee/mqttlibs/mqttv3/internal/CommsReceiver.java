@@ -15,6 +15,7 @@
  */
 package top.fighter_lee.mqttlibs.mqttv3.internal;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.ExecutorService;
@@ -29,8 +30,6 @@ import top.fighter_lee.mqttlibs.mqttv3.internal.wire.MqttPubAck;
 import top.fighter_lee.mqttlibs.mqttv3.internal.wire.MqttPubComp;
 import top.fighter_lee.mqttlibs.mqttv3.internal.wire.MqttPubRec;
 import top.fighter_lee.mqttlibs.mqttv3.internal.wire.MqttWireMessage;
-import top.fighter_lee.mqttlibs.mqttv3.logging.Logger;
-import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
 
 
 /**
@@ -38,7 +37,6 @@ import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
  */
 public class CommsReceiver implements Runnable {
 	private static final String CLASS_NAME = CommsReceiver.class.getName();
-	private static final Logger log = LoggerFactory.getLogger(LoggerFactory.MQTT_CLIENT_MSG_CAT, CLASS_NAME);
 
 	private boolean running = false;
 	private Object lifecycle = new Object();
@@ -58,7 +56,6 @@ public class CommsReceiver implements Runnable {
 		this.clientComms = clientComms;
 		this.clientState = clientState;
 		this.tokenStore = tokenStore;
-		log.setResourceName(clientComms.getClient().getClientId());
 	}
 
 	/**
@@ -70,7 +67,6 @@ public class CommsReceiver implements Runnable {
 		this.threadName = threadName;
 		final String methodName = "start";
 		//@TRACE 855=starting
-		log.fine(CLASS_NAME,methodName, "855");
 		synchronized (lifecycle) {
 			if (!running) {
 				running = true;
@@ -89,7 +85,6 @@ public class CommsReceiver implements Runnable {
 				receiverFuture.cancel(true);
 			}
 			//@TRACE 850=stopping
-			log.fine(CLASS_NAME,methodName, "850");
 			if (running) {
 				running = false;
 				receiving = false;
@@ -107,7 +102,6 @@ public class CommsReceiver implements Runnable {
 		}
 		recThread = null;
 		//@TRACE 851=stopped
-		log.fine(CLASS_NAME,methodName,"851");
 	}
 
 	/**
@@ -129,7 +123,6 @@ public class CommsReceiver implements Runnable {
 		while (running && (in != null)) {
 			try {
 				//@TRACE 852=network read message
-				log.fine(CLASS_NAME,methodName,"852");
 				receiving = in.available() > 0;
 				MqttWireMessage message = in.readMqttWireMessage();
 				receiving = false;
@@ -150,7 +143,6 @@ public class CommsReceiver implements Runnable {
 						//This probably means we already received this message and it's being send again
 						//because of timeouts, crashes, disconnects, restarts etc.
 						//It should be safe to ignore these unexpected messages.
-						log.fine(CLASS_NAME, methodName, "857");
 					} else {
 						// It its an ack and there is no token then something is not right.
 						// An ack should always have a token assoicated with it.
@@ -165,14 +157,12 @@ public class CommsReceiver implements Runnable {
 			}
 			catch (MqttException ex) {
 				//@TRACE 856=Stopping, MQttException
-				log.fine(CLASS_NAME,methodName,"856",null,ex);
 				running = false;
 				// Token maybe null but that is handled in shutdown
 				clientComms.shutdownConnection(token, ex);
 			}
 			catch (IOException ioe) {
 				//@TRACE 853=Stopping due to IOException
-				log.fine(CLASS_NAME,methodName,"853");
 
 				running = false;
 				// An EOFException could be raised if the broker processes the
@@ -189,7 +179,6 @@ public class CommsReceiver implements Runnable {
 		}
 
 		//@TRACE 854=<
-		log.fine(CLASS_NAME,methodName,"854");
 	}
 
 	public boolean isRunning() {

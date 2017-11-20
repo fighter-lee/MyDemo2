@@ -16,6 +16,7 @@
  */
 package top.fighter_lee.mqttlibs.mqttv3.internal.wire;
 
+
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;

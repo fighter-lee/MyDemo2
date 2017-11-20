@@ -15,6 +15,7 @@
  */
 package top.fighter_lee.mqttlibs.mqttv3.internal;
 
+
 import java.io.IOException;
 
 import javax.net.ssl.HostnameVerifier;
@@ -23,8 +24,6 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
 import top.fighter_lee.mqttlibs.mqttv3.MqttException;
-import top.fighter_lee.mqttlibs.mqttv3.logging.Logger;
-import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
 
 
 /**
@@ -32,7 +31,6 @@ import top.fighter_lee.mqttlibs.mqttv3.logging.LoggerFactory;
  */
 public class SSLNetworkModule extends TCPNetworkModule {
 	private static final String CLASS_NAME = SSLNetworkModule.class.getName();
-	private static final Logger log = LoggerFactory.getLogger(LoggerFactory.MQTT_CLIENT_MSG_CAT,CLASS_NAME);
 
 	private String[] enabledCiphers;
 	private int handshakeTimeoutSecs;
@@ -53,7 +51,6 @@ public class SSLNetworkModule extends TCPNetworkModule {
 		super(factory, host, port, resourceContext);
 		this.host = host;
 		this.port = port;
-		log.setResourceName(resourceContext);
 	}
 
 	/**
@@ -72,17 +69,6 @@ public class SSLNetworkModule extends TCPNetworkModule {
 		final String methodName = "setEnabledCiphers";
 		this.enabledCiphers = enabledCiphers;
 		if ((socket != null) && (enabledCiphers != null)) {
-			if (log.isLoggable(Logger.FINE)) {
-				String ciphers = "";
-				for (int i=0;i<enabledCiphers.length;i++) {
-					if (i>0) {
-						ciphers+=",";
-					}
-					ciphers+=enabledCiphers[i];
-				}
-				//@TRACE 260=setEnabledCiphers ciphers={0}
-				log.fine(CLASS_NAME,methodName,"260",new Object[]{ciphers});
-			}
 			((SSLSocket) socket).setEnabledCipherSuites(enabledCiphers);
 		}
 	}

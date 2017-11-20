@@ -15,6 +15,8 @@
  */
 package top.fighter_lee.mqttlibs.mqttv3.internal.security;
 
+import com.adups.mqtt_libs.mqttv3.MqttSecurityException;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -38,8 +40,6 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 
-import top.fighter_lee.mqttlibs.mqttv3.MqttSecurityException;
-import top.fighter_lee.mqttlibs.mqttv3.logging.Logger;
 
 
 /**
@@ -100,7 +100,7 @@ import top.fighter_lee.mqttlibs.mqttv3.logging.Logger;
  * </ul>
  */
 public class SSLSocketFactoryFactory {
-	private static final String CLASS_NAME = "org.eclipse.paho.client.mqttv3.internal.security.SSLSocketFactoryFactory";
+	private static final String CLASS_NAME = "com.adups.mqtt_libs.mqttv3.internal.security.SSLSocketFactoryFactory";
 	/**
 	 * Property keys specific to the client).
 	 */
@@ -147,8 +147,6 @@ public class SSLSocketFactoryFactory {
 		(byte) 0x80, (byte) 0x05, (byte) 0xb8, (byte) 0x89, (byte) 0x9c };
 
 	private static final String xorTag = "{xor}";
-	
-	private Logger logger = null;
 
 
 	/**
@@ -182,15 +180,6 @@ public class SSLSocketFactoryFactory {
 		configs = new Hashtable();
 	}
 	
-	/**
-	 * Create new instance of class.
-	 * Constructor used by the broker.
-	 * @param logger the {@link Logger} to be used
-	 */
-	public SSLSocketFactoryFactory(Logger logger) {
-		this();
-		this.logger = logger;
-	}
 
 	/**
 	 * Checks whether a key belongs to the supported IBM SSL property keys.
@@ -271,7 +260,7 @@ public class SSLSocketFactoryFactory {
 	 * This should not be used for cryptographical purpose, it's a simple
 	 * scrambler to obfuscate clear-text passwords.
 	 * 
-	 * @see org.eclipse.paho.client.mqttv3.internal.security.SSLSocketFactoryFactory#deObfuscate
+	 * @see com.adups.mqtt_libs.mqttv3.internal.security.SSLSocketFactoryFactory#deObfuscate
 	 * 
 	 * @param password
 	 *            The password to be encrypted, as a char[] array.
@@ -293,7 +282,7 @@ public class SSLSocketFactoryFactory {
 	 * The inverse operation of obfuscate: returns a cleartext password that was
 	 * previously obfuscated using the XOR scrambler.
 	 * 
-	 * @see org.eclipse.paho.client.mqttv3.internal.security.SSLSocketFactoryFactory#obfuscate
+	 * @see com.adups.mqtt_libs.mqttv3.internal.security.SSLSocketFactoryFactory#obfuscate
 	 * 
 	 * @param ePassword
 	 *            An obfuscated password.
@@ -369,7 +358,7 @@ public class SSLSocketFactoryFactory {
 	/**
 	 * Obfuscate any key & trust store passwords within the given properties.
 	 * 
-	 * @see org.eclipse.paho.client.mqttv3.internal.security.SSLSocketFactoryFactory#obfuscate
+	 * @see com.adups.mqtt_libs.mqttv3.internal.security.SSLSocketFactoryFactory#obfuscate
 	 * 
 	 * @param p
 	 *            properties
@@ -590,7 +579,7 @@ public class SSLSocketFactoryFactory {
 	 * provided in plain text, but it will be stored internally in a scrambled
 	 * XOR format.
 	 * 
-	 * @see org.eclipse.paho.client.mqttv3.internal.security.SSLSocketFactoryFactory#obfuscate
+	 * @see com.adups.mqtt_libs.mqttv3.internal.security.SSLSocketFactoryFactory#obfuscate
 	 * 
 	 * @param configID
 	 *            The configuration identifier for selecting a configuration or
@@ -677,7 +666,7 @@ public class SSLSocketFactoryFactory {
 	 * provided in plain text, but it will be stored internally in a scrambled
 	 * XOR format.
 	 * 
-	 * @see org.eclipse.paho.client.mqttv3.internal.security.SSLSocketFactoryFactory#obfuscate
+	 * @see com.adups.mqtt_libs.mqttv3.internal.security.SSLSocketFactoryFactory#obfuscate
 	 * 
 	 * @param configID
 	 *            The configuration identifier for selecting a configuration or
@@ -1100,7 +1089,7 @@ public class SSLSocketFactoryFactory {
 	 * Initializes key- and truststore. Returns an SSL context factory. If no
 	 * SSLProtocol is already set, uses DEFAULT_PROTOCOL
 	 * 
-	 * @see org.eclipse.paho.client.mqttv3.internal.security.SSLSocketFactoryFactory#DEFAULT_PROTOCOL
+	 * @see com.adups.mqtt_libs.mqttv3.internal.security.SSLSocketFactoryFactory#DEFAULT_PROTOCOL
 	 * 
 	 * @param configID
 	 *            The configuration ID
@@ -1116,11 +1105,6 @@ public class SSLSocketFactoryFactory {
 		if (protocol == null) {
 			protocol = DEFAULT_PROTOCOL;
 		}
-		if (logger != null) {
-			// 12000 "SSL initialization: configID = {0}, protocol = {1}"
-			logger.fine(CLASS_NAME, METHOD_NAME, "12000", new Object[] {configID!=null ? configID : "null (broker defaults)", 
-					protocol});
-		}
 		
 		String provider = getJSSEProvider(configID);
 		try {
@@ -1128,11 +1112,6 @@ public class SSLSocketFactoryFactory {
 				ctx = SSLContext.getInstance(protocol);
 			} else {
 				ctx = SSLContext.getInstance(protocol, provider);
-			}
-			if (logger != null) {
-				// 12001 "SSL initialization: configID = {0}, provider = {1}"
-				logger.fine(CLASS_NAME, METHOD_NAME, "12001", new Object[] {configID!=null ? configID : "null (broker defaults)", 
-						ctx.getProvider().getName()});
 			}
 			
 			String keyStoreName = getProperty(configID, KEYSTORE, null);
@@ -1161,29 +1140,14 @@ public class SSLSocketFactoryFactory {
 					 */
 					keyStoreName = getProperty(configID, KEYSTORE, SYSKEYSTORE);
 				}
-				if (logger != null) {
-					// 12004 "SSL initialization: configID = {0}, keystore = {1}"
-					logger.fine(CLASS_NAME, METHOD_NAME, "12004", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-							keyStoreName!=null ? keyStoreName : "null"});
-				}
 				
 				char[] keyStorePwd=getKeyStorePassword(configID);
-				if (logger != null) {
-					// 12005 "SSL initialization: configID = {0}, keystore password = {1}"
-					logger.fine(CLASS_NAME, METHOD_NAME, "12005", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-							keyStorePwd!=null ? obfuscate(keyStorePwd) : "null"});
-				}
-				
+
 				String keyStoreType=getKeyStoreType(configID);
 				if(keyStoreType==null) {
 					keyStoreType = KeyStore.getDefaultType();
 				}
-				if (logger != null) {
-					// 12006 "SSL initialization: configID = {0}, keystore type = {1}"
-					logger.fine(CLASS_NAME, METHOD_NAME, "12006", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-							keyStoreType!=null ? keyStoreType : "null"});
-				}
-				
+
 				String keyMgrAlgo = KeyManagerFactory.getDefaultAlgorithm();
 				String keyMgrProvider = getKeyStoreProvider(configID);
 				String keyManager = getKeyManager(configID);
@@ -1199,14 +1163,6 @@ public class SSLSocketFactoryFactory {
 							keyMgrFact = KeyManagerFactory.getInstance(keyMgrAlgo, keyMgrProvider);
 						} else {
 							keyMgrFact = KeyManagerFactory.getInstance(keyMgrAlgo);
-						}
-						if (logger != null) {
-							// 12010 "SSL initialization: configID = {0}, keystore manager algorithm = {1}"
-							logger.fine(CLASS_NAME, METHOD_NAME, "12010", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-									keyMgrAlgo!=null ? keyMgrAlgo : "null"});
-							// 12009 "SSL initialization: configID = {0}, keystore manager provider = {1}"
-							logger.fine(CLASS_NAME, METHOD_NAME, "12009", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-									keyMgrFact.getProvider().getName()});				
 						}
 						keyMgrFact.init(keyStore, keyStorePwd);
 						keyMgr=keyMgrFact.getKeyManagers();
@@ -1226,30 +1182,15 @@ public class SSLSocketFactoryFactory {
 			// keystore loaded, keymanagers instantiated if possible
 			// now the same for the truststore.
 			String trustStoreName = getTrustStore(configID);
-			if (logger != null) {
-				// 12011 "SSL initialization: configID = {0}, truststore = {1}"
-				logger.fine(CLASS_NAME, METHOD_NAME, "12011", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-						trustStoreName!=null ? trustStoreName : "null"});
-			}
 			KeyStore trustStore=null;
 			TrustManagerFactory trustMgrFact=null;
 			TrustManager[] trustMgr=null;
 			char[] trustStorePwd=getTrustStorePassword(configID);
-			if (logger != null) {
-				// 12012 "SSL initialization: configID = {0}, truststore password = {1}"
-				logger.fine(CLASS_NAME, METHOD_NAME, "12012", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-						trustStorePwd!=null ? obfuscate(trustStorePwd) : "null"});
-			}
 			String trustStoreType=getTrustStoreType(configID);
 			if(trustStoreType==null) {
 				trustStoreType = KeyStore.getDefaultType();
 			}
-			if (logger != null) {
-				// 12013 "SSL initialization: configID = {0}, truststore type = {1}"
-				logger.fine(CLASS_NAME, METHOD_NAME, "12013", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-						trustStoreType!=null ? trustStoreType : "null"});
-			}
-			
+
 			String trustMgrAlgo = TrustManagerFactory.getDefaultAlgorithm();
 			String trustMgrProvider = getTrustStoreProvider(configID);
 			String trustManager = getTrustManager(configID);
@@ -1265,16 +1206,6 @@ public class SSLSocketFactoryFactory {
 						trustMgrFact = TrustManagerFactory.getInstance(trustMgrAlgo, trustMgrProvider);
 					} else {
 						trustMgrFact = TrustManagerFactory.getInstance(trustMgrAlgo);
-					}
-					if (logger != null) {
-						
-						// 12017 "SSL initialization: configID = {0}, truststore manager algorithm = {1}"
-						logger.fine(CLASS_NAME, METHOD_NAME, "12017", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-								trustMgrAlgo!=null ? trustMgrAlgo : "null"});
-						
-						// 12016 "SSL initialization: configID = {0}, truststore manager provider = {1}"
-						logger.fine(CLASS_NAME, METHOD_NAME, "12016", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-								trustMgrFact.getProvider().getName()});		
 					}
 					trustMgrFact.init(trustStore);
 					trustMgr=trustMgrFact.getTrustManagers();
@@ -1306,7 +1237,7 @@ public class SSLSocketFactoryFactory {
 //	 * IllegalArgumentException if the server socket factory could not be
 //	 * created due to underlying configuration problems.
 //	 * 
-//	 * @see org.eclipse.paho.client.mqttv3.internal.security.SSLSocketFactoryFactory#DEFAULT_PROTOCOL
+//	 * @see com.adups.mqtt_libs.mqttv3.internal.security.SSLSocketFactoryFactory#DEFAULT_PROTOCOL
 //	 * 
 //	 * @param configID
 //	 *            The configuration identifier for selecting a configuration.
@@ -1336,7 +1267,7 @@ public class SSLSocketFactoryFactory {
 	 * IllegalArgumentException if the socket factory could not be created due
 	 * to underlying configuration problems.
 	 * 
-	 * @see org.eclipse.paho.client.mqttv3.internal.security.SSLSocketFactoryFactory#DEFAULT_PROTOCOL
+	 * @see com.adups.mqtt_libs.mqttv3.internal.security.SSLSocketFactoryFactory#DEFAULT_PROTOCOL
 	 * @param configID
 	 *            The configuration identifier for selecting a configuration.
 	 * @return An SSLSocketFactory
@@ -1346,12 +1277,7 @@ public class SSLSocketFactoryFactory {
 			throws MqttSecurityException {
 		final String METHOD_NAME = "createSocketFactory";
 		SSLContext ctx = getSSLContext(configID);
-		if (logger != null) {
-			// 12020 "SSL initialization: configID = {0}, application-enabled cipher suites = {1}"
-			logger.fine(CLASS_NAME, METHOD_NAME, "12020", new Object[]{configID!=null ? configID : "null (broker defaults)", 
-					getEnabledCipherSuites(configID)!=null ? getProperty(configID, CIPHERSUITES, null) : "null (using platform-enabled cipher suites)"});
-		}
-			
+
 		return ctx.getSocketFactory();
 	}
 

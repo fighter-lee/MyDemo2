@@ -15,6 +15,7 @@
  */
 package top.fighter_lee.mqttlibs.mqttv3.internal.wire;
 
+
 import java.io.IOException;
 
 import top.fighter_lee.mqttlibs.mqttv3.MqttException;
