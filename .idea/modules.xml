@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidDivConfigLibs/AndroidDivConfigLibs.iml" filepath="$PROJECT_DIR$/AndroidDivConfigLibs/AndroidDivConfigLibs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MNFAnalyseLib/MNFAnalyseLib.iml" filepath="$PROJECT_DIR$/MNFAnalyseLib/MNFAnalyseLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyDemo2.iml" filepath="$PROJECT_DIR$/MyDemo2.iml" />
       <module fileurl="file://$PROJECT_DIR$/aidlclient/aidlclient.iml" filepath="$PROJECT_DIR$/aidlclient/aidlclient.iml" />
       <module fileurl="file://$PROJECT_DIR$/aidlservice/aidlservice.iml" filepath="$PROJECT_DIR$/aidlservice/aidlservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/definitionview/definitionview.iml" filepath="$PROJECT_DIR$/definitionview/definitionview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/google_vr/google_vr.iml" filepath="$PROJECT_DIR$/google_vr/google_vr.iml" />
       <module fileurl="file://$PROJECT_DIR$/jobschedulerexample/jobschedulerexample.iml" filepath="$PROJECT_DIR$/jobschedulerexample/jobschedulerexample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/junittestlearn/junittestlearn.iml" filepath="$PROJECT_DIR$/junittestlearn/junittestlearn.iml" />
       <module fileurl="file://$PROJECT_DIR$/lock/lock.iml" filepath="$PROJECT_DIR$/lock/lock.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mqttlibs/mqttlibs.iml" filepath="$PROJECT_DIR$/mqttlibs/mqttlibs.iml" />
       <module fileurl="file://$PROJECT_DIR$/weaklock/weaklock.iml" filepath="$PROJECT_DIR$/weaklock/weaklock.iml" />
     </modules>
   </component>

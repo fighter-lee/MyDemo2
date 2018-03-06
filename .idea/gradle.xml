@@ -9,14 +9,15 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AndroidDivConfigLibs" />
+            <option value="$PROJECT_DIR$/MNFAnalyseLib" />
             <option value="$PROJECT_DIR$/aidlclient" />
             <option value="$PROJECT_DIR$/aidlservice" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/definitionview" />
-            <option value="$PROJECT_DIR$/google_vr" />
             <option value="$PROJECT_DIR$/jobschedulerexample" />
+            <option value="$PROJECT_DIR$/junittestlearn" />
             <option value="$PROJECT_DIR$/lock" />
-            <option value="$PROJECT_DIR$/mqttlibs" />
             <option value="$PROJECT_DIR$/weaklock" />
           </set>
         </option>

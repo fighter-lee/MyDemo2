@@ -2,6 +2,7 @@ package com.fighter.google_vr;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.vr.sdk.widgets.pano.VrPanoramaEventListener;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick() {//当我们点击了VrPanoramaView 时候触发            super.onClick();
+            new Handler()
         }
 
         @Override
